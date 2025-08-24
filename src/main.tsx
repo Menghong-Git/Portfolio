@@ -1,10 +1,13 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { BrowserRouter } from "react-router";
 import AllRoutes from "./Routes";
+import { HashRouter } from "react-router";
+import React from "react";
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter basename="/Portfolio">
-    <AllRoutes />
-  </BrowserRouter>
+  <React.StrictMode>
+    <HashRouter basename="/Portfolio">
+      <AllRoutes />
+    </HashRouter>
+  </React.StrictMode>
 );
