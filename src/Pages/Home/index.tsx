@@ -1,15 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import ButtonShadow from "@/components/ui/ButtonShadow";
 import Card from "@/components/ui/Card";
 import { Typewriter } from "@/components/ui/typewriter-text";
 
-// Animation variants
-const fadeUp = {
+/* 🔹 Variants typed with "custom" */
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 50 },
-  visible: (custom: number) => ({
+  visible: (custom: number = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
@@ -92,7 +92,7 @@ const Home = () => {
         className="flex justify-center items-center rounded-3xl drop-shadow-[0_4px_50px_rgba(239,68,68,0.7)] mt-12 md:mt-0 md:w-1/2"
       >
         <Card />
-      </motion.div >
+      </motion.div>
     </div>
   );
 };

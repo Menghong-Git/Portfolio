@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
   ArrowRight,
   Code,
@@ -20,7 +20,8 @@ interface BentoGridItemProps {
   size?: 'small' | 'medium' | 'large';
 }
 
-const iconVariants = {
+/* 🔹 Variants with proper typing */
+const iconVariants: Variants = {
   initial: { rotate: 0, scale: 1 },
   animate: {
     rotate: [0, 10, -10, 0],
@@ -34,24 +35,35 @@ const iconVariants = {
   },
 };
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', damping: 25, stiffness: 120 },
+  },
+};
+
+const containerVariants: Variants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
 const BentoGridItem = ({
   title,
   description,
   icon,
   className,
 }: BentoGridItemProps) => {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: 'spring', damping: 25 },
-    },
-  };
-
   return (
     <motion.div
-      variants={cardVariants}
+      variants={cardVariants} // ✅ type-safe now
       className={cn(
         'group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card px-6 pt-6 pb-8 shadow-md transition-all duration-500 hover:shadow-xl',
         className,
@@ -109,19 +121,22 @@ const items = [
   },
   {
     title: 'Responsive Design',
-    description: 'I create layouts that look great and work smoothly across all devices, from desktops to mobile phones.',
+    description:
+      'I create layouts that look great and work smoothly across all devices, from desktops to mobile phones.',
     icon: <Layers className="size-6" />,
     size: 'medium' as const,
   },
   {
     title: 'Customizable',
-    description: "Every project is tailored to fit your brand’s identity, ensuring a unique and personalized design.",
+    description:
+      "Every project is tailored to fit your brand’s identity, ensuring a unique and personalized design.",
     icon: <Palette className="size-6" />,
     size: 'medium' as const,
   },
   {
     title: 'Performance',
-    description: 'I optimize websites for speed and efficiency so they load fast and provide a smooth user experience.',
+    description:
+      'I optimize websites for speed and efficiency so they load fast and provide a smooth user experience.',
     icon: <Zap className="size-6" />,
     size: 'small' as const,
   },
@@ -135,16 +150,6 @@ const items = [
 ];
 
 export function BentoGrid1() {
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
   return (
     <section className="w-full px-4 py-16 sm:py-20 md:py-24">
       <div className="mx-auto max-w-7xl">

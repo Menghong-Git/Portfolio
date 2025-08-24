@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router";
 import AllRoutes from "./Routes";
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/Portfolio">
     <AllRoutes />
   </BrowserRouter>
 );
