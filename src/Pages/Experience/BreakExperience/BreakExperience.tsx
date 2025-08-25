@@ -209,8 +209,8 @@ export function BreakExperience() {
         </div>
       </div>
 
-      <div className="relative w-full overflow-clip px-4 md:px-0 bg-gradient-to-b from-gray-100 to-red-100 mt-12 space-y-12 ">
-        <div className="text-4xl md:text-8xl justify-center items-center flex flex-col font-mono ">Recent Prpject</div>
+      <div className="relative w-full overflow-clip px-4 md:px-0 bg-gradient-to-b from-gray-100 to-red-100 mt-12  ">
+        <div className="text-4xl md:text-8xl justify-center items-center flex flex-col font-mono bg-white dark:bg-black ">Recent Prpject</div>
         <Timeline data={data} />
       </div>
     </div>
